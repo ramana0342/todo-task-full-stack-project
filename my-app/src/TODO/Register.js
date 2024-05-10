@@ -77,7 +77,7 @@ const UserRegister = () => {
         </div>
         <div style={{ marginTop: "10px", textAlign: "center" }}><b>Already have An Account ?</b><br /> <NavLink to="/UserLogin/"><b>LOGIN</b></NavLink></div>
         {RegisterStatus == true ? <><br /><b style={{ color: "green", textAlign: "center" }}>User Registered Succesfully</b></> : ""}
-        {Error == ERROR ? <><br /><b style={{ color: "red", textAlign: "center" }}>{Error.ERROR}</b></> : ""}
+        {Error.ERROR == "ERROR" ? <><br /><b style={{ color: "red", textAlign: "center" }}>{Error.ERROR}</b></> : ""}
 
       </div>
     </div>
