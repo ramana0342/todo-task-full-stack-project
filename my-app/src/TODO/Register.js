@@ -28,7 +28,7 @@ const UserRegister = () => {
 
 
     axios.post("https://todo-task-full-stack-project.onrender.com/register", userData).then((res) => {
-      console.log(res)
+      console.log(res.data)
       if (res.data.Success) {
         setError(null)
         setRegisterStatus(true)
@@ -37,7 +37,7 @@ const UserRegister = () => {
 
       } else {
         setRegisterStatus(null)
-        setError(res.data)
+        setError(true)
       }
     }).catch((err) => {
       console.log(err)
@@ -77,7 +77,7 @@ const UserRegister = () => {
         </div>
         <div style={{ marginTop: "10px", textAlign: "center" }}><b>Already have An Account ?</b><br /> <NavLink to="/UserLogin/"><b>LOGIN</b></NavLink></div>
         {RegisterStatus == true ? <><br /><b style={{ color: "green", textAlign: "center" }}>User Registered Succesfully</b></> : ""}
-        {Error.ERROR == "ERROR" ? <><br /><b style={{ color: "red", textAlign: "center" }}>{Error.ERROR}</b></> : ""}
+        {Error==true ? <><br /><b style={{ color: "red", textAlign: "center" }}>Enter All Details</b></> : ""}
 
       </div>
     </div>
