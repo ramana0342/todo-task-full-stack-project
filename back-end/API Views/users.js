@@ -22,16 +22,17 @@
           Success : "User Stored in DB",
           userDetails
        })
+      }else{
+         return res.json({
+            ERROR:"Already Hava An Account On This Email ID"
+         })
+       }
     }else{
        return res.json({
          ERROR:"Enter All Details"
        })
     }
-    }else{
-      return res.json({
-         ERROR:"Already Hava An Account On This Email ID"
-      })
-    }
+    
     
     }); 
 
