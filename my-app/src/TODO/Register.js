@@ -18,6 +18,8 @@ const UserRegister = () => {
 
 
   const handleChange = (field, value) => {
+    setRegisterStatus(null)
+        setError(null)
     setUserData({ ...userData, [field]: value })
     console.log(value)
   }
