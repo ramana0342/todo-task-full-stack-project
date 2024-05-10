@@ -11,6 +11,8 @@
 
     let {Name,Email,Password} = req.body;
     if(Name&&Email&&Password){
+      let existUser = await userSchema.findOne({Email:Email});
+      if(existUser==null){
       let encryptPassword= bcrypt.hashSync(Password,10);
       req.body.Password = encryptPassword
        let user=new  userSchema(req.body);
@@ -25,7 +27,11 @@
          ERROR:"Enter All Details"
        })
     }
-
+    }else{
+      return res.json({
+         ERROR:"Already Hava An Account On This Email ID"
+      })
+    }
     
     }); 
 
