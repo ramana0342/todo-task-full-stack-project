@@ -14,7 +14,7 @@ const UserTasks = ({ setUpdateFun, DOMUpdate, setDOMUpdate, setUpdateTask }) => 
         const headers = {
             "Authorization": `${token}`
         }
-        axios.get("http://localhost:8080/getUserTasks", { headers }).then((res) => {
+        axios.get("https://todo-task-full-stack-project.onrender.com/getUserTasks", { headers }).then((res) => {
             setUserTasks(res.data.TaskData)
         })
     }, [DOMUpdate])
@@ -24,7 +24,7 @@ const UserTasks = ({ setUpdateFun, DOMUpdate, setDOMUpdate, setUpdateTask }) => 
 
     const DelettTask = (TaskId) => {
         setDOMUpdate()
-        axios.delete(`http://localhost:8080/DeleteTask/${TaskId}`).then((res) => {
+        axios.delete(`https://todo-task-full-stack-project.onrender.com/DeleteTask/${TaskId}`).then((res) => {
             console.log(res.data)
             setDOMUpdate(res.data)
         })
@@ -103,7 +103,7 @@ const UserActivity = () => {
 
     const AddTaskEvent = () => {
         if (userTask.Task !== "") {
-            axios.post("http://localhost:8080/addTask", userTask, { headers }).then((res) => {
+            axios.post("https://todo-task-full-stack-project.onrender.com/addTask", userTask, { headers }).then((res) => {
                 console.log(res.data)
                 setDOMUpdate(res.data)
                 setUserTask({ Task: "" })
@@ -126,7 +126,7 @@ const UserActivity = () => {
 
     const UpdatingTask = (TaskId) => {
         if (updateTask.Task !== "") {
-            axios.put(`http://localhost:8080/UpDataTask/${TaskId}`, updateTask).then((res) => {
+            axios.put(`https://todo-task-full-stack-project.onrender.com/UpDataTask/${TaskId}`, updateTask).then((res) => {
                 if (res.data.Success) {
                     setDOMUpdate(res.data.Success)
                     setUpdateFun(null)
