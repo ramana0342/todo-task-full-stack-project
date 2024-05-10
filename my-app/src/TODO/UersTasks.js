@@ -60,7 +60,7 @@ const UserTasks = ({ setUpdateFun, DOMUpdate, setDOMUpdate, setUpdateTask }) => 
                     })
 
 
-                        : <h1 style={{ textAlign: "center", marginTop:"10px"}}>Empty Tasks,Create Your Tasks</h1>}
+                        : <h1 style={{ textAlign: "center", marginTop:"10px",color:"white"}}>Empty Tasks,Create Your Tasks</h1>}
                 </div>
             </div>
         </div>
