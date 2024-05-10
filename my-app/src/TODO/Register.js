@@ -37,7 +37,9 @@ const UserRegister = () => {
 
       } else {
         setRegisterStatus(null)
-        setError(true)
+        console.log(res)
+        setError(res.data.ERROR)
+        console.log(Error)
       }
     }).catch((err) => {
       console.log(err)
@@ -77,7 +79,7 @@ const UserRegister = () => {
         </div>
         <div style={{ marginTop: "10px", textAlign: "center" }}><b>Already have An Account ?</b><br /> <NavLink to="/UserLogin/"><b>LOGIN</b></NavLink></div>
         {RegisterStatus == true ? <><br /><b style={{ color: "green", textAlign: "center" }}>User Registered Succesfully</b></> : ""}
-        {Error==true ? <><br /><b style={{ color: "red", textAlign: "center" }}>Enter All Details</b></> : ""}
+        {Error ? <><br/><b style={{ color: "red", textAlign: "center" }}>{Error}</b></> : ""}
 
       </div>
     </div>
