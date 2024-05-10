@@ -25,7 +25,7 @@ const UserRegister=()=>{
   const SignUpBtnEvent=()=>{
     
    
-           axios.post("http://localhost:8080/register",userData).then((res)=>{
+           axios.post("https://todo-task-full-stack-project.onrender.com/register",userData).then((res)=>{
             console.log(res)
             if(res.data.Success){
               setError(null)
