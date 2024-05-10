@@ -6,64 +6,67 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 
-const UserLogin=({LoginStatus,setLoginStatus})=>{
-       
-  let navigate=useNavigate()
-    const[userLogin,setuserLogin]=useState({Eamil:"",Password:""});
-    
-    const[LoginError,setLoginError]=useState("")
+const UserLogin = ({ LoginStatus, setLoginStatus }) => {
 
-    const handleChange=(field,value)=>{
+  let navigate = useNavigate()
+  const [userLogin, setuserLogin] = useState({ Eamil: "", Password: "" });
+  const [LoginError, setLoginError] = useState("")
+
+  
+  
+  const handleChange = (field, value) => {
+    setLoginError("")
+    setuserLogin({ ...userLogin, [field]: value })
+  }
+
+
+
+  const LoginEvent = () => {
+    axios.post("https://todo-task-full-stack-project.onrender.com/login", userLogin).then((res) => {
+      console.log(res.data)
+      if (res.data.Success) {
         setLoginError("")
-        setuserLogin({...userLogin,[field]:value}) 
-    }
+        setLoginStatus(true)
+        alert("Logged Succesfully");
+        sessionStorage.setItem("Token", JSON.stringify(res.data.Token));
+        navigate("/showUserTasks/")
+      } else {
+        setLoginStatus()
+        setLoginError(res.data.Error)
+      }
+    })
+  }
 
-    const LoginEvent=()=>{
-         axios.post("https://todo-task-full-stack-project.onrender.com/login",userLogin).then((res)=>{
-            console.log(res.data)
-            if(res.data.Success){
-                setLoginError("")
-                setLoginStatus(true)
-                sessionStorage.setItem("Token",JSON.stringify(res.data.Token)); 
-                alert("Logged Succesfully");
-                navigate("/showUserTasks/")
-            }else{
-                setLoginStatus()
-                setLoginError(res.data.Error)
-            }
-         })
-    }
+  return (<>
 
-    return(<>
-
-<div class="Logincontainer">
-    <div className="Loginform">
-      <h3><b>Plese LogIn</b></h3>
+    <div class="Logincontainer">
+      <div className="Loginform">
+        <h3><b>Plese LogIn</b></h3>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"><b>Email address:</b></label><br/>
-          <input 
-          onChange={(e)=>{handleChange("Email",e.target.value)}} 
-          type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email"/>
-          
+          <label for="exampleInputEmail1" class="form-label"><b>Email address:</b></label><br />
+          <input
+            onChange={(e) => { handleChange("Email", e.target.value) }}
+            type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email" />
+
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"><b>Password:</b></label><br/>
+          <label for="exampleInputPassword1" class="form-label"><b>Password:</b></label><br />
           <input
-             onChange={(e)=>{handleChange("Password",e.target.value)}}  
-           type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Password"/>
+            onChange={(e) => { handleChange("Password", e.target.value) }}
+            type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Password" />
         </div>
         <div className="Login-btn">
-        <button onClick={()=>{LoginEvent()}} type="submit" class="btn btn-primary" id="submit">LogIn</button>
+          <button onClick={() => { LoginEvent() }} type="submit" class="btn btn-primary" id="submit">LogIn</button>
         </div>
-        <div style={{marginTop:"10px",textAlign:"center"}}><b>Don't have An Account ?</b><br/> <NavLink to="/"><b>REGISTER</b></NavLink></div>
-        <div>{LoginStatus==false ? <b style={{color:"green"}}>Logged Succesfully</b>: ""}
-             { LoginError ? <b style={{color:"red"}}>{LoginError}</b>: "" } 
+        <div style={{ marginTop: "10px", textAlign: "center" }}><b>Don't have An Account ?</b><br /> <NavLink to="/"><b>REGISTER</b></NavLink></div>
+        <div>{LoginStatus == true ? <b style={{ color: "green" }}>Logged Succesfully , Plese Wait</b> : ""}
+          {LoginError ? <b style={{ color: "red" }}>{LoginError}</b> : ""}
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
 
 
-    </>)
+  </>)
 }
 
 export default UserLogin

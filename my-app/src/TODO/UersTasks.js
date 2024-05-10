@@ -36,35 +36,35 @@ const UserTasks = ({ setUpdateFun, DOMUpdate, setDOMUpdate, setUpdateTask }) => 
     }
 
 
-    
+
     return (<>
-        <div className="container GetTask-OUter-Container"  style={{color:"black" , marginTop:"80px"}}>
+        <div className="container GetTask-OUter-Container" style={{ color: "black", marginTop: "80px" }}>
             <div className="row justify-content-center">
                 <div className="col-md-6">
 
                     {UserTasks.length > 0 ? UserTasks.map((item, index) => {
                         console.log(item)
                         return (<>
-                            <div className="GetTask-Inner-Container d-flex justify-content-between" style={{padding:"12px",overflow:"auto"}}>
+                            <div className="GetTask-Inner-Container d-flex justify-content-between" style={{ padding: "12px", overflow: "auto" }}>
                                 <div><h5><p>{item.Task}</p></h5></div>
                                 <div className="d-flex">
-                                <div  onClick={() => { DelettTask(item._id) }} style={{marginRight:"10px"}}> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                                </svg></div>  
-                                <div  onClick={() => { UpdateSymbolClick(item._id, item.Task) }}><i class="fa-solid fa-pen-to-square"></i></div>
-                                </div> 
+                                    <div onClick={() => { DelettTask(item._id) }} style={{ marginRight: "10px" }}> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                    </svg></div>
+                                    <div onClick={() => { UpdateSymbolClick(item._id, item.Task) }}><i class="fa-solid fa-pen-to-square"></i></div>
                                 </div>
+                            </div>
 
                         </>)
                     })
 
 
-                        : <h1 style={{ textAlign: "center", marginTop:"10px",color:"white"}}>Empty Tasks,Create Your Tasks</h1>}
+                        : <h1 style={{ textAlign: "center", marginTop: "10px", color: "white" }}>Empty Tasks,Create Your Tasks</h1>}
                 </div>
             </div>
         </div>
-    
+
     </>)
 
 }
@@ -137,24 +137,24 @@ const UserActivity = () => {
         }
     }
 
-    return(<>
-    <div className="Main-Div">
     return (<>
+        <div className="Main-Div">
+            return (<>
 
 
-        <div class="col d-flex justify-content-center">
-            <div class="input-group flex-nowrap " id="inputFields">
-                {UpdateFun == null ? <><input onChange={(e) => { handleChange("Task", e.target.value) }} type="text" class="form-control" value={userTask.Task} placeholder="Type Any Task" id="TaskName" />
-                    <input onClick={() => { AddTaskEvent() }} class="btn btn-primary" type="submit" value="Add Task" id="submitBtn" /></> :
+                <div class="col d-flex justify-content-center">
+                    <div class="input-group flex-nowrap " id="inputFields">
+                        {UpdateFun == null ? <><input onChange={(e) => { handleChange("Task", e.target.value) }} type="text" class="form-control" value={userTask.Task} placeholder="Type Any Task" id="TaskName" />
+                            <input onClick={() => { AddTaskEvent() }} class="btn btn-primary" type="submit" value="Add Task" id="submitBtn" /></> :
 
-                    <><input onChange={(e) => { updateHandleChange("Task", e.target.value) }} type="text" class="form-control" value={updateTask.Task} placeholder="Type Any Task" id="TaskName" />
-                        <input onClick={() => { UpdatingTask(UpdateFun.TaskId) }} class="btn btn-warning" type="submit" value="Update" id="submitBtn" /></>}
-            </div>
+                            <><input onChange={(e) => { updateHandleChange("Task", e.target.value) }} type="text" class="form-control" value={updateTask.Task} placeholder="Type Any Task" id="TaskName" />
+                                <input onClick={() => { UpdatingTask(UpdateFun.TaskId) }} class="btn btn-warning" type="submit" value="Update" id="submitBtn" /></>}
+                    </div>
+                </div>
+                <UserTasks setUpdateFun={setUpdateFun} DOMUpdate={DOMUpdate} setDOMUpdate={setDOMUpdate} setUpdateTask={setUpdateTask} />
+            </>)
         </div>
-        <UserTasks setUpdateFun={setUpdateFun} DOMUpdate={DOMUpdate} setDOMUpdate={setDOMUpdate} setUpdateTask={setUpdateTask} />
     </>)
-   </div>
-   </>)
 
 }
 
