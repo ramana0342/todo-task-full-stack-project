@@ -23,7 +23,7 @@ const UserLogin = ({ LoginStatus, setLoginStatus }) => {
 
   const LoginEvent = () => {
     axios.post("https://todo-task-full-stack-project.onrender.com/login", userLogin).then((res) => {
-      console.log(res.data)
+      console.log(res.data.Token)
       if (res.data.Success) {
         alert("Logged Succesfully");
         setLoginError("")

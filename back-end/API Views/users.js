@@ -52,7 +52,7 @@
       })
    }
 
-   let token = jwt.sign({Email : userDetails.Email , userID: userDetails._id},"Shh")
+   let token = jwt.sign({userID:userDetails._id},"Shh")
    return res.json({
       Success : "Login Success",
       Token : token

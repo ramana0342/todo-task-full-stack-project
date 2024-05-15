@@ -93,7 +93,7 @@ const UserActivity = () => {
 
 
     let token = JSON.parse(sessionStorage.getItem("Token"))
-    console.log(token)
+    //console.log(token)
     let headers = {
         "Authorization": `${token}`,
         "Content-Type": 'application/json'

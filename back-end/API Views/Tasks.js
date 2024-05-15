@@ -15,7 +15,7 @@ const express= require("express");
        let token = req.headers.authorization;
        let tokenResult = jwt.verify(token,"Shh");
        const Tasks = new TaskSchema({UserID:tokenResult.userID,Task:req.body.Task})
-       let  userTasks=await Tasks.save()
+       await Tasks.save()
          return res.json({
             Success:"Task Was Added in DB",
           })
