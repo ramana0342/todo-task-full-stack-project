@@ -116,8 +116,9 @@ input{
 
   .Main-Div{
     width: 100%;
+    height: 100%;
     background-image: url("https://wallpapers.com/images/hd/dark-brown-background-2560-x-1600-tjqa92ns5bymsoto.jpg");
-    height: 100vh;
+    background-size: 100% 100%;
     margin-top: 50px;
 }
 .GetTask-Inner-Container{
@@ -127,6 +128,8 @@ input{
     border: 1px solid black;
     
 }
+
+
 
 
 

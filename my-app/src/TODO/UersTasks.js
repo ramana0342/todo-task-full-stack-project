@@ -139,20 +139,22 @@ const UserActivity = () => {
 
     return (<>
         <div className="Main-Div">
-            return (<>
-
+        <div className="container">
+        <div className="row">
 
                 <div class="col d-flex justify-content-center">
-                    <div class="input-group flex-nowrap " id="inputFields">
+                    <div class="input-group flex-nowrap" id="inputFields">
                         {UpdateFun == null ? <><input onChange={(e) => { handleChange("Task", e.target.value) }} type="text" class="form-control" value={userTask.Task} placeholder="Type Any Task" id="TaskName" />
                             <input onClick={() => { AddTaskEvent() }} class="btn btn-primary" type="submit" value="Add Task" id="submitBtn" /></> :
 
                             <><input onChange={(e) => { updateHandleChange("Task", e.target.value) }} type="text" class="form-control" value={updateTask.Task} placeholder="Type Any Task" id="TaskName" />
                                 <input onClick={() => { UpdatingTask(UpdateFun.TaskId) }} class="btn btn-warning" type="submit" value="Update" id="submitBtn" /></>}
                     </div>
+                    </div>
+                    </div>
                 </div>
                 <UserTasks setUpdateFun={setUpdateFun} DOMUpdate={DOMUpdate} setDOMUpdate={setDOMUpdate} setUpdateTask={setUpdateTask} />
-            </>)
+         
         </div>
     </>)
 

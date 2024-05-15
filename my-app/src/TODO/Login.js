@@ -25,9 +25,9 @@ const UserLogin = ({ LoginStatus, setLoginStatus }) => {
     axios.post("https://todo-task-full-stack-project.onrender.com/login", userLogin).then((res) => {
       console.log(res.data)
       if (res.data.Success) {
+        alert("Logged Succesfully");
         setLoginError("")
         setLoginStatus(true)
-        alert("Logged Succesfully");
         sessionStorage.setItem("Token", JSON.stringify(res.data.Token));
         navigate("/showUserTasks/")
       } else {
