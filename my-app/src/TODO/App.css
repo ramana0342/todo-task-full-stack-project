@@ -1,7 +1,8 @@
+
 .TODOTASK-IMG{
-    width:150px;
+    width:100px;
     height:50px;
-    border-radius: 75px;
+    border-radius: 50px;
 }
 .Login-img{
     width:100px;
@@ -73,25 +74,15 @@ input{
 
 /* Add to task Button */
 
-#input{
-    margin-top: 40px;
-    margin-bottom:100px;
-}
+
 #inputFields{
+    padding-top: 40px;
     width:400px;
     position: fixed;
-   
-    
-}
-.Inner-Container{
-    display: block;
-    border: 1px solid black;
 }
 
-.UpdateInput{
-      width: 100px;
-      height: 30px;
-}
+
+
 
 
 /*  header */
@@ -104,30 +95,46 @@ input{
     justify-content: space-around;
     padding: 10px;
     z-index: 1000;
-    background-color: black;
-    /*background-image: url("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQLhy30t7JfgGVmmrdbUI40yx3P1kJD3-mQfeytVlO4cayAl0kg");*/
+    background-image: url("https://wallpapers.com/images/hd/dark-brown-background-2560-x-1600-tjqa92ns5bymsoto.jpg");
     background-size: 100px 100px;
     
 }
   
-  .content {
-    margin-top: 70px;
-  }
-
-  .Main-Div{
-    width: 100%;
-    height: 100%;
+.content{
+    min-height:100vh;
     background-image: url("https://wallpapers.com/images/hd/dark-brown-background-2560-x-1600-tjqa92ns5bymsoto.jpg");
-    background-size: 100% 100%;
+    background-size: cover;
     margin-top: 50px;
 }
+
 .GetTask-Inner-Container{
+    margin: 1px;
     background-image: url("https://i.pinimg.com/originals/9f/14/6b/9f146b598a117df287b768e9de208e15.jpg");
     box-shadow:50px 50px 100px rgb(0, 0, 0) ;
     background-repeat: no-repeat;
     border: 1px solid black;
-    
 }
+.Empty-Task-div{
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width:450px){
+
+    #inputFields{
+        padding-top: 40px;
+        width:330px;
+        position: fixed;
+    }
+
+}
+
+
+
+
 
 
 

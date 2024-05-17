@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
@@ -15,6 +15,7 @@ const UserRegister = () => {
   const [userData, setUserData] = useState({ Name: "", Email: "", Password: "" })
   const [RegisterStatus, setRegisterStatus] = useState(null)
   const [Error, setError] = useState(null)
+  const [btnStatus,setBtnStatus]=useState()
 
 
   const handleChange = (field, value) => {
@@ -25,24 +26,27 @@ const UserRegister = () => {
   }
 
   const SignUpBtnEvent = () => {
-
-
+    setBtnStatus(true)
     axios.post("https://todo-task-full-stack-project.onrender.com/register", userData).then((res) => {
-      console.log(res.data)
+      //console.log(res.data)
       if (res.data.Success) {
         setError(null)
         setRegisterStatus(true)
+        setBtnStatus()
         alert("User Registered Succesfully")
         navigte("/UserLogin/")
+
 
       } else {
         setRegisterStatus(null)
         console.log(res)
         setError(res.data.ERROR)
-        console.log(Error)
+        setBtnStatus()
+        //console.log(Error)
       }
     }).catch((err) => {
-      console.log(err)
+      //console.log(err)
+      setBtnStatus()
     })
   }
 
@@ -73,9 +77,8 @@ const UserRegister = () => {
             type="password" class="form-control" id="createPassword" placeholder="Password" />
         </div>
         <div className="SignUpBtn">
-          <button onClick={() => {
-            SignUpBtnEvent()
-          }} type="submit" class="btn btn-primary signBtn" id="submit">SignUp</button>
+          {btnStatus ? <button class="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span role="status">Loading...</span></button> 
+          :<button onClick={() => {SignUpBtnEvent()}} type="submit" class="btn btn-primary signBtn" id="submit">SignUp</button>}
         </div>
         <div style={{ marginTop: "10px", textAlign: "center" }}><b>Already have An Account ?</b><br /> <NavLink to="/UserLogin/"><b>LOGIN</b></NavLink></div>
         {RegisterStatus == true ? <><br /><b style={{ color: "green", textAlign: "center" }}>User Registered Succesfully</b></> : ""}

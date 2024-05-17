@@ -11,6 +11,7 @@ const UserLogin = ({ LoginStatus, setLoginStatus }) => {
   let navigate = useNavigate()
   const [userLogin, setuserLogin] = useState({ Eamil: "", Password: "" });
   const [LoginError, setLoginError] = useState("")
+  const [loginBtnstatus,setloginBtnstatus] = useState()
 
   
   
@@ -22,17 +23,20 @@ const UserLogin = ({ LoginStatus, setLoginStatus }) => {
 
 
   const LoginEvent = () => {
+    setloginBtnstatus(true)
     axios.post("https://todo-task-full-stack-project.onrender.com/login", userLogin).then((res) => {
       console.log(res.data.Token)
       if (res.data.Success) {
-        alert("Logged Succesfully");
         setLoginError("")
         setLoginStatus(true)
         sessionStorage.setItem("Token", JSON.stringify(res.data.Token));
+        setloginBtnstatus()
+        alert("Logged Succesfully");
         navigate("/showUserTasks/")
       } else {
         setLoginStatus()
         setLoginError(res.data.Error)
+        setloginBtnstatus()
       }
     })
   }
@@ -56,7 +60,8 @@ const UserLogin = ({ LoginStatus, setLoginStatus }) => {
             type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Your Password" />
         </div>
         <div className="Login-btn">
-          <button onClick={() => { LoginEvent() }} type="submit" class="btn btn-primary" id="submit">LogIn</button>
+            {loginBtnstatus ? <button class="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span role="status">Loading...</span></button> 
+            :<button onClick={() => { LoginEvent() }} type="submit" class="btn btn-primary" id="submit">LogIn</button> }
         </div>
         <div style={{ marginTop: "10px", textAlign: "center" }}><b>Don't have An Account ?</b><br /> <NavLink to="/"><b>REGISTER</b></NavLink></div>
         <div>{LoginStatus == true ? <b style={{ color: "green" }}>Logged Succesfully , Plese Wait</b> : ""}
