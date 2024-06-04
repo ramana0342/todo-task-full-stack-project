@@ -50,9 +50,9 @@ const UserTasks = ({ setUpdateFun,setUpdateTask, DOMUpdate, setDOMUpdate ,Update
                     {UserTasks.length > 0 ? UserTasks.map((item, index) => {
                         console.log(item)
                         return (<>
-                            <div className="GetTask-Inner-Container d-flex justify-content-between" style={{ padding: "4px 25px", overflow: "auto"}}>
-                                <div><h5><p>{item.Task}</p></h5></div>
-                                <div className="d-flex">
+                            <div className="GetTask-Inner-Container d-flex justify-content-between" style={{ padding: "2px 25px", overflow: "auto"}}>
+                                <div style={{marginTop:"10px"}}><h5><p>{item.Task}</p></h5></div>
+                                <div className="d-flex" style={{marginTop:"10px"}}>
                                 {deleteStatus === item._id ? <div style={{ marginRight: "10px" }} class="spinner-border text-info" role="status"><span class="visually-hidden">Loading...</span></div> 
                                     :<div  onClick={() => { DeleteTask(item._id) }} style={{ marginRight: "10px" , cursor:"pointer"}}> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
