@@ -117,9 +117,10 @@ input{
 .Empty-Task-div{
     color: white;
     display: flex;
-    height: 100vh;
+    height: 50vh;
     justify-content: center;
     align-items: center;
+    
 }
 
 @media(max-width:450px){

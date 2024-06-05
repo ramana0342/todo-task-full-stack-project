@@ -162,7 +162,7 @@ const UserActivity = () => {
 
                 <div class="col d-flex justify-content-center">
                     <div class="input-group flex-nowrap" id="inputFields">
-                        {UpdateFun == null ? <><input onChange={(e) => { handleChange("Task", e.target.value) }} type="text" class="form-control" value={userTask.Task} placeholder="Type Any Task"/>
+                        {UpdateFun == null ? <><input onChange={(e) => { handleChange("Task", e.target.value) }} type="text" class="form-control" value={userTask.Task} placeholder="Enter Your Task"/>
                         { BtnStatus ?  <button class="btn btn-primary" type="button" disabled><span class="spinner-border spinner-border-sm" aria-hidden="true"></span><span role="status">Loading...</span></button>
                         : <input onClick={() => { AddTaskEvent() }} class="btn btn-primary" type="submit" value="Add Task" id="submitBtn" /> }</>:
 
